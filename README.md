@@ -1,10 +1,10 @@
 # 🖥️ FreeRePers
 
-¡Bienvenido/a a [FreeRePers](https://freerepers.vercel.app), una web que recopila webs que ofrecen recursos gratis para desarrolladores, como Iconos, Fuentes y Librerías. 
+¡Welcome to [FreeRePers](https://freerepers.vercel.app), a website that collect free resources like icons, fonts, etc for developers. 
 
 ![Imgur Image](https://jmbc.vercel.app/projects/freerepers.webp)
 
-## 📚 Contenido
-- Renderizado en el servidor con SSR Vercel
-- Recopilación de recursos útiles para desarrolladores
-- Animación entre transiciones
+## 📚 Content
+- Server render with Vercel SSR.
+- Transitions animations.
+- Made with Astro.
