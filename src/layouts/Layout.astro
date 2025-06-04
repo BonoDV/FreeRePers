@@ -1,50 +1,49 @@
 ---
 import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
+import { getLocaleFromUrl, t } from "../services/i18n";
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="description"
-			content="Your favourite resource recopiller. Made by Developer to Developers"
-		/>
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<ViewTransitions />
-	</head>
-	<div
-		class="absolute top-0 z-[-2] h-screen w-[105vw] bg-neutral-960 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-	>
-	</div>
-	<body class="bg-gray-900 min-h-screen pb-32">
-		<Header />
-		<main class="max-w-5xl px-4 m-auto">
-			<slot />
-		</main>
-	</body><style is:global>
-		html {
-			font-family: system-ui, sans-serif;
-			background-size: 224px;
-			color-scheme: dark light; /* Para que use el modo oscuro y la letra se vea blanca */
-			-ms-overflow-style: none; /* Para Internet Explorer 10+ */
-			overflow: scroll !important;
-		}
-		html::-webkit-scrollbar {
-			display: none;
-		}
-		body {
-			scrollbar-width: none;
-		}
-	</style>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={t("description", locale)} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <div
+    class="absolute top-0 z-[-2] h-screen w-[105vw] bg-neutral-960 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+  >
+  </div>
+  <body class="bg-gray-900 min-h-screen pb-32">
+    <Header locale={locale} t={t} />
+    <main class="max-w-5xl px-4 m-auto">
+      <slot />
+    </main>
+  </body><style is:global>
+    html {
+      font-family: system-ui, sans-serif;
+      background-size: 224px;
+      color-scheme: dark light; /* Para que use el modo oscuro y la letra se vea blanca */
+      -ms-overflow-style: none; /* Para Internet Explorer 10+ */
+      overflow: scroll !important;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      scrollbar-width: none;
+    }
+  </style>
 </html>
